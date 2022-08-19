@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,18 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::controller(ChatsController::class)->group(function () {
+
+        Route::get('/chats', 'index')
+        ->name('chats');
+
+        Route::post('/chats-store', 'store')
+        ->name('chats.store');
+    });
+
 });
