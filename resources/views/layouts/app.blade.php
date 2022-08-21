@@ -13,6 +13,66 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+        <!-- Firebase-Scripts -->
+        <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js"></script>
+        {{-- <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-app-compat.js"></script> --}}
+        {{-- <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-messaging.js"></script> --}}
+
+        <script>
+            // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
+            // import { getMessaging } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-messaging.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyDx__n9zGFB-hBqobhlIdz2HuE5CiC0PuM",
+                authDomain: "cognimeet-chat.firebaseapp.com",
+                projectId: "cognimeet-chat",
+                storageBucket: "cognimeet-chat.appspot.com",
+                messagingSenderId: "974052418909",
+                appId: "1:974052418909:web:a40b61c1fff140227db4b4",
+                measurementId: "G-SNSQCL6Q66"
+            };
+
+            // Initialize Firebase
+            // const app = initializeApp(firebaseConfig);
+            firebase.initializeApp(firebaseConfig);
+
+            // Initialize Firebase Cloud Messaging and get a reference to the service
+            // const messaging = getMessaging(app);
+
+            // messaging.usePublicVapidKey("BJYNSp2OLN0SNgQmQtb_Pn0XcX02yULXIIu-1PURNrjl4TpJfFKGlfydX_T820Avc0A-lvHV0TXGo0rFOhty49Y");
+
+            // sending a post request to the server with javascript axios library
+            // function sendTokenToServer(fcm_token) {
+            //     const user_id = "{{ auth()->user()->id }}";
+
+            //     console.log('token recieved', fcm_token);
+
+            //     axios.post('/api/save-token', {
+            //         // fcm_token, user_id
+            //         test: 'test'
+            //     }).then(res => {
+            //         console.log(res);
+            //     });
+            // }
+
+            // Add the public key generated from the console here.
+            // messaging.getToken().then((currentToken) => {
+            //     if (currentToken) {
+            //         // Send the token to your server and update the UI if necessary
+            //         sendTokenToServer(currentToken);
+            //         // ...
+            //     } else {
+            //         // Show permission request UI
+            //         console.log('No registration token available. Request permission to generate one.');
+            //         // ...
+            //     }
+            // }).catch((err) => {
+            //     console.log('An error occurred while retrieving token. ', err);
+            // // ...
+            // });
+        </script>
+
+        <!-- Axios-Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
         <!-- Styles -->
@@ -43,55 +103,6 @@
 
         @livewireScripts
 
-        <script defer type="module">
-            // Import the functions you need from the SDKs you need
-            import firebase from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
-            // import "https://www.gstatic.com/firebasejs/9.9.3/firebase-messaging.js";
-
-            // TODO: Replace the following with your app's Firebase project configuration
-            // See: https://firebase.google.com/docs/web/learn-more#config-object
-            const firebaseConfig = {
-                apiKey: "AIzaSyDx__n9zGFB-hBqobhlIdz2HuE5CiC0PuM",
-                authDomain: "cognimeet-chat.firebaseapp.com",
-                projectId: "cognimeet-chat",
-                storageBucket: "cognimeet-chat.appspot.com",
-                messagingSenderId: "974052418909",
-                appId: "1:974052418909:web:a40b61c1fff140227db4b4",
-                measurementId: "G-SNSQCL6Q66"
-            };
-
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-
-
-            // Initialize Firebase Cloud Messaging and get a reference to the service
-            const messaging = firebase.messaging();
-
-            function requestPermission() {
-                console.log('Requesting permission...');
-                Notification.requestPermission().then((permission) => {
-                    if (permission === 'granted') {
-                    console.log('Notification permission granted.');
-                    }
-                });
-            }
-
-            // Add the public key generated from the console here.
-            messaging.getToken({vapidKey: "BJYNSp2OLN0SNgQmQtb_Pn0XcX02yULXIIu-1PURNrjl4TpJfFKGlfydX_T820Avc0A-lvHV0TXGo0rFOhty49Y"}).then((currentToken) => {
-                if (currentToken) {
-                    // Send the token to your server and update the UI if necessary
-                    // ...
-                } else {
-                    // Show permission request UI
-                    console.log('No registration token available. Request permission to generate one.');
-                    // ...
-                }
-            }).catch((err) => {
-            console.log('An error occurred while retrieving token. ', err);
-            // ...
-            });
-
-        </script>
-        </script>
+        @yield('scripts')
     </body>
 </html>

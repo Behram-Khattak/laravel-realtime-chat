@@ -14,6 +14,9 @@ class FCMController extends Controller
      */
     public function index(Request $request)
     {
+        dd($request);
+        exit();
+
         $input = $request->all();
         $fcm_token = $input['fcm_token'];
         $user_id = $input['user_id'];
