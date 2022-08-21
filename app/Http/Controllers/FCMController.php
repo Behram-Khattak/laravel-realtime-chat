@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FCMController extends Controller
 {
@@ -12,20 +13,19 @@ class FCMController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function __invoke(Request $request)
     {
-        dd($request);
-        exit();
+        $request->validate([
+            'token' => ['required', 'string'],
+            'user_id' => ['required', 'integer'],
+        ]);
 
-        $input = $request->all();
-        $fcm_token = $input['fcm_token'];
-        $user_id = $input['user_id'];
+        $user = User::findOrFail($request['user_id']);
 
+        $user->update([
+            'fcm_token' => $request['token'],
+        ]);
 
-         $user = User::findOrFail($user_id);
-
-        $user->fcm_token = $fcm_token;
-        $user->save();
         return response()->json([
             'success'=>true,
             'message'=>'User token updated successfully.'
