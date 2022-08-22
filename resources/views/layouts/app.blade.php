@@ -10,6 +10,9 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        <!-- Fontawesome Css -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -42,6 +45,13 @@
 
         <!-- Styles -->
         @livewireStyles
+        <style>
+            .user_avatar > img {
+                width: 60px;
+                height: 40px;
+                border-radius: 50%;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -69,5 +79,8 @@
         @livewireScripts
 
         @yield('scripts')
+
+        <!-- Fontawesome Js -->
+        <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
     </body>
 </html>
