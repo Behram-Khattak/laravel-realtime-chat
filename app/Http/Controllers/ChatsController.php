@@ -17,9 +17,11 @@ class ChatsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Chat $chat)
     {
-        return view('chats.chats');
+        $chats = $chat->get();
+
+        return view('chats.chats', compact('chats'));
     }
 
     /**
@@ -40,29 +42,18 @@ class ChatsController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'message' => ['required', 'string'],
-        // ]);
-
-        // Chat::create([
-        //     'sender_id' => auth()->user()->id,
-        //     'sender_name' => auth()->user()->name,
-        //     'message' => $request['message'],
-        // ]);
-
-        // return redirect()->back();
-
-        $input = $request->all();
-        $message = $input['message'];
-        $chat = new Chat([
-            'sender_id' => auth()->user()->id,
-            'sender_name' => auth()->user()->name,
-            'message' => $message
+        $request->validate([
+            'message' => ['required', 'string'],
         ]);
 
-        $this->broadcastMessage(auth()->user()->name,$message);
+        Chat::create([
+            'sender_id' => auth()->user()->id,
+            'sender_name' => auth()->user()->name,
+            'message' => $request['message'],
+        ]);
 
-        $chat->save();
+        // $this->broadcastMessage(auth()->user()->name, $request['message']);
+
         return redirect()->back();
     }
 

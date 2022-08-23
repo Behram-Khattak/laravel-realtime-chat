@@ -45,13 +45,6 @@
 
         <!-- Styles -->
         @livewireStyles
-        <style>
-            .user_avatar > img {
-                width: 60px;
-                height: 40px;
-                border-radius: 50%;
-            }
-        </style>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
