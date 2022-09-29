@@ -185,7 +185,6 @@ return [
         /*
          * Package Service Providers...
          */
-        LaravelFCM\FCMServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -213,8 +212,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'FCM'      => LaravelFCM\Facades\FCM::class,
-        'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
     ])->toArray(),
 
 ];
