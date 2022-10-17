@@ -75,5 +75,24 @@
 
         <!-- Fontawesome Js -->
         <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyBnGX56IdnHRrd3lTcFGkkuiqlcnlNX7XQ",
+              authDomain: "lafi-chat.firebaseapp.com",
+              projectId: "lafi-chat",
+              storageBucket: "lafi-chat.appspot.com",
+              messagingSenderId: "91287516640",
+              appId: "1:91287516640:web:a14cc6f5b70a2272da6785"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+          </script>
     </body>
 </html>
