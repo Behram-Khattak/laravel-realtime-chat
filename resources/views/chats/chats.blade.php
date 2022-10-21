@@ -7,10 +7,10 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-indigo-300 overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="container mx-auto">
-                    <div class="min-w-full border rounded lg:grid lg:grid-cols-3">
-                        <div class="border-r border-gray-300 lg:col-span-1">
+                    <div class="min-w-full border rounded lg:grid">
+                        {{-- <div class="border-r border-gray-300 lg:col-span-1">
                             <div class="mx-3 my-3">
                             <div class="relative text-gray-600">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -38,16 +38,16 @@
                                 </a>
                             </li>
                             </ul>
-                        </div>
+                        </div> --}}
                         <div class="hidden lg:col-span-2 lg:block">
                             <div class="w-full">
-                            <div class="relative flex items-center p-3 border-b border-gray-300">
+                            <div class="relative flex items-center p-3 border-b bg-white border-gray-300">
                                 <span class="block ml-2 font-bold text-gray-600">Lets Chat</span>
                             </div>
                             <div class="relative w-full p-6 overflow-y-auto">
 
                                 <ul class="space-y-2">
-                                    @foreach ($chats as $chat)
+                                    {{-- @foreach ($chats as $chat)
                                     @if ($chat->sender_id == auth()->user()->id)
                                         <li class="flex justify-start">
                                             <div class="relative max-w-xl px-4 py-2 bg-gray-100 text-gray-700 rounded shadow">
@@ -67,13 +67,13 @@
                                             </div>
                                         </li>
                                     @endif
-                                    @endforeach
+                                    @endforeach --}}
                                 </ul>
 
                             </div>
 
-                            <div class="w-full p-3 border-t border-gray-300">
-                                <form class="flex items-center justify-between" action="{{ route('chats.store') }}" method="POST">
+                            <div class="w-full p-3 border-t bg-white border-gray-300">
+                                <form class="flex items-center justify-between" action="#" method="POST">
                                     @csrf
                                     <input type="text" placeholder="Message"
                                     class="block w-full py-2 pl-4 mx-3 bg-gray-100 rounded-full outline-none focus:text-gray-700"

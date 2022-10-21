@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ChatsController;
+use App\Http\Controllers\Chats\ChatsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,9 +32,6 @@ Route::middleware([
 
         Route::get('/chats', 'index')
         ->name('chats');
-
-        Route::post('/chats-store', 'store')
-        ->name('chats.store');
     });
 
 });
